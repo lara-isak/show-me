@@ -7,6 +7,7 @@ import { db } from "../lib/firebase";
 export default function AddShow() {
   const [artist, setArtist] = useState("");
   const [date, setDate] = useState("");
+  const [displayDate, setDisplayDate] = useState("");
   const [venue, setVenue] = useState("");
   const [isPast, setIsPast] = useState(false);
 
@@ -15,6 +16,7 @@ export default function AddShow() {
     await addDoc(collection(db, "concerts"), {
       artist,
       date,
+      displayDate,
       venue,
       isPast,
     });
@@ -34,6 +36,13 @@ export default function AddShow() {
         type="date"
         value={date}
         onChange={(e) => setDate(e.target.value)}
+        className="w-full p-2 border rounded"
+      />
+      <input
+        type="text"
+        placeholder="Display Date"
+        value={displayDate}
+        onChange={(e) => setDisplayDate(e.target.value)}
         className="w-full p-2 border rounded"
       />
       <input
