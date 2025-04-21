@@ -7,7 +7,7 @@ import { db } from "../lib/firebase";
 interface Concert {
   id: string;
   artist: string;
-  displayDate: string;
+  date: string;
   venue: string;
   isPast: boolean;
 }
@@ -35,7 +35,7 @@ export default function ShowList() {
         <div key={concert.id} className="p-4 border rounded-lg">
           <h3 className="font-bold text-lg">{concert.artist}</h3>
           <p>
-            {concert.displayDate} · {concert.venue}
+            {concert.date} · {concert.venue}
           </p>
           <p className={concert.isPast ? "text-green-500" : "text-blue-500"}>
             {concert.isPast ? "✅ Attended" : "🎟️ Upcoming"}

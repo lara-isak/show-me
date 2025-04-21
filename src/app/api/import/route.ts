@@ -9,13 +9,12 @@ export async function POST(req: Request) {
   }
 
   const body = await req.json();
-  const { artist, date, displayDate, venue } = body;
+  const { artist, date, venue } = body;
 
   try {
     await addDoc(collection(db, "concerts"), {
       artist,
       date,
-      displayDate,
       venue,
       isPast: new Date(date) < new Date(),
       createdAt: new Date().toISOString(),
